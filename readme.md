@@ -5,7 +5,6 @@
 <p align="center">
   <a href="https://necxaschool.com"><img alt="NECXA School" src="https://img.shields.io/badge/NECXA-School-E0592A?style=for-the-badge"></a>
   <img alt="Netlify" src="https://img.shields.io/badge/hospedado%20no-Netlify-232325?style=for-the-badge&logo=netlify&logoColor=white">
-  <img alt="Claude" src="https://img.shields.io/badge/IA-Claude%20(Anthropic)-3B3B3D?style=for-the-badge">
   <img alt="Open source" src="https://img.shields.io/badge/c%C3%B3digo-aberto-2FB36B?style=for-the-badge">
 </p>
 
