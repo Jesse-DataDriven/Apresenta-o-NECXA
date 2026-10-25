@@ -1,7 +1,7 @@
 // POST /api/ia
 // modos: "chat" (Pergunte ao Jessé·IA), "caso" (gera caso do desafio), "avaliar" (pontua a resposta)
 import { PERSONA_CHAT, PERSONA_CASO, PERSONA_AVALIA } from "../lib/conteudo.mjs";
-import { claude, parseJSON, json, rateLimited, logGitHub, rankingStore, clean, MODEL } from "../lib/util.mjs";
+import { claude, claudeJSON, json, rateLimited, logGitHub, rankingStore, clean, MODEL } from "../lib/util.mjs";
 
 const TEMAS = [
   "banco digital com cartão de crédito",
@@ -48,12 +48,11 @@ export default async (req, context) => {
 
     if (modo === "caso") {
       const tema = TEMAS[Math.floor(Math.random() * TEMAS.length)];
-      const raw = await claude({
+      const caso = await claudeJSON({
         system: PERSONA_CASO,
         messages: [{ role: "user", content: `Crie um caso novo para uma operação de ${tema}. Varie a causa raiz (processo, sistema, regra, capacitação ou comunicação).` }],
-        max_tokens: 900,
+        max_tokens: 1600,
       });
-      const caso = parseJSON(raw);
       return json({ caso });
     }
 
@@ -63,15 +62,14 @@ export default async (req, context) => {
       const resposta = { causa: clean(r.causa, 800), evidencia: clean(r.evidencia, 800), prioridade: clean(r.prioridade, 800) };
       if (!caso || !resposta.causa) return json({ erro: "Escreva ao menos a causa raiz." }, 400);
 
-      const raw = await claude({
+      const av = await claudeJSON({
         system: PERSONA_AVALIA,
         messages: [{
           role: "user",
           content: `<caso>\n${JSON.stringify(caso).slice(0, 4000)}\n</caso>\n<resposta_participante>\nCausa raiz: ${resposta.causa}\nEvidência: ${resposta.evidencia}\nO que atacaria primeiro: ${resposta.prioridade}\n</resposta_participante>`,
         }],
-        max_tokens: 700,
+        max_tokens: 1200,
       });
-      const av = parseJSON(raw);
       const cap = (n, m) => Math.max(0, Math.min(m, Math.round(Number(n) || 0)));
       av.causa = cap(av.causa, 40);
       av.evidencia = cap(av.evidencia, 30);
