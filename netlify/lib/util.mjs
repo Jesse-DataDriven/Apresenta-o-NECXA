@@ -13,7 +13,8 @@ export function json(data, status = 200) {
 
 /* ---------- Anthropic ---------- */
 export async function claude({ system, messages, max_tokens = 700 }) {
-  const key = process.env.ANTHROPIC_API_KEY;
+  // remove espaços, quebras de linha e aspas coladas por engano
+  const key = (process.env.ANTHROPIC_API_KEY || "").trim().replace(/^["']|["']$/g, "").trim();
   if (!key) throw Object.assign(new Error("ANTHROPIC_API_KEY não configurada no Netlify."), { status: 500 });
   const r = await fetch("https://api.anthropic.com/v1/messages", {
     method: "POST",
@@ -23,6 +24,7 @@ export async function claude({ system, messages, max_tokens = 700 }) {
   if (!r.ok) {
     const t = await r.text();
     console.error("Anthropic", r.status, t.slice(0, 500));
+    if (r.status === 401) console.error(`Diagnóstico da chave: começa com "${key.slice(0, 13)}", tem ${key.length} caracteres (o normal é começar com "sk-ant-api03-" e ter ~108).`);
     let tipo = "", detalhe = "";
     try { const e = JSON.parse(t).error || {}; tipo = e.type || ""; detalhe = e.message || ""; } catch {}
     const motivos = {
