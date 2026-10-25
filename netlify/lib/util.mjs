@@ -44,8 +44,34 @@ export async function claude({ system, messages, max_tokens = 700 }) {
 }
 
 export function parseJSON(text) {
-  const m = text.match(/\{[\s\S]*\}/);
-  return JSON.parse(m ? m[0] : text);
+  const semCerca = text.replace(/```(?:json)?/gi, "");
+  const m = semCerca.match(/\{[\s\S]*\}/);
+  return JSON.parse(m ? m[0] : semCerca);
+}
+
+// Pede JSON à IA; se vier quebrado ou cortado, pede de novo uma vez, mais curto.
+export async function claudeJSON({ system, messages, max_tokens = 1600 }) {
+  const raw = await claude({ system, messages, max_tokens });
+  try {
+    return parseJSON(raw);
+  } catch (e) {
+    console.error("JSON inválido na 1ª tentativa:", e.message, raw.slice(-200));
+    const raw2 = await claude({
+      system,
+      messages: [
+        ...messages,
+        { role: "assistant", content: raw },
+        { role: "user", content: "Sua resposta veio cortada ou com JSON inválido. Responda de novo APENAS com o JSON completo e válido, com textos mais curtos, sem quebras de linha dentro das strings e sem ``` ." },
+      ],
+      max_tokens,
+    });
+    try {
+      return parseJSON(raw2);
+    } catch (e2) {
+      console.error("JSON inválido na 2ª tentativa:", e2.message, raw2.slice(-200));
+      throw Object.assign(new Error("A IA se enrolou no formato da resposta. Clique de novo, que costuma funcionar."), { status: 502 });
+    }
+  }
 }
 
 /* ---------- limite simples por IP (best-effort, por instância) ---------- */
