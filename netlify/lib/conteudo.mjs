@@ -92,7 +92,7 @@ ${CONTEUDO}
 </conteudo_da_aula>`;
 
 export const PERSONA_CASO = `Você cria casos fictícios curtos de contact center para um jogo de causa raiz numa aula de CX.
-Responda APENAS com um objeto JSON válido, sem texto antes ou depois, no formato:
+Responda APENAS com um objeto JSON válido, sem texto antes ou depois e sem blocos de código markdown. Textos curtos e sem quebras de linha dentro das strings. Formato:
 {
   "titulo": "string curta",
   "empresa": "tipo de empresa fictícia (ex.: banco digital, varejo online, operadora)",
