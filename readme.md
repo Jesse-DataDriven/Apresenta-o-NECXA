@@ -46,7 +46,7 @@ O formato é um misto de apresentação e bate-papo: o material guia a conversa,
 
 ## O Laboratório Jessé·IA
 
-Acessível em **`/lab`** (pensado para o celular da turma).
+Acessível em **`/lab`** (celular).
 
 - **Pergunte ao Jessé·IA**: chat com o Claude, da Anthropic, usando o conteúdo da aula como base de conhecimento. Um RAG simples na prática.
 - **Desafio Causa Raiz**: a IA gera um caso fictício com dados de atendimento (volume, CSAT, CES, resolutividade, CV, comentários e pista da monitoria). O participante aponta causa raiz, evidência e prioridade; a IA avalia o método e dá nota de 0 a 100.
