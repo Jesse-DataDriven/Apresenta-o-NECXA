@@ -36,7 +36,7 @@ O formato é um misto de apresentação e bate-papo: o material guia a conversa,
 | 5 | **AS IS → TO BE** | Fluxo fictício de contestação de compra: 9 etapas e 5 dores viram 6 etapas com o cliente no controle. |
 | 6 | **A provocação** | *Como a IA pode nos ajudar?* |
 | 7 | **Capturar** | Um comentário de cliente vira cinco dados (canal, tema, sentimento, esforço e ação). Plataformas como Medallia e Birdie. |
-| 8 | **Trabalhar junto** | O escritório de agentes de IA (Cowork) conectado a projeto, e-mails, pastas, JIRA e roadmap, com arquitetura de escalonamento: o agente faz, o agente propõe, você decide. |
+| 8 | **Trabalhar junto** | Demonstração fictícia de Coworkers (agentes de IA) conectando projetos, e-mails, pastas, JIRA e roadmap, com arquitetura de escalonamento: o agente faz, o agente propõe, você decide. |
 | 9 | **Conectar** | MCP e RAG explicados com animação. |
 | 10 | **Laboratório ao vivo** | QR code para a turma entrar no Jessé·IA e no Desafio Causa Raiz, com ranking em tempo real. |
 | 11 | **Para levar** | Calculadora RICE, este repositório e o portfólio do Jessé. |
