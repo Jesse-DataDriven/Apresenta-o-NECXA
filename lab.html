@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Laboratório Jessé·IA</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Laboratório de IA da masterclass NECXA School: tire dúvidas com o Jessé·IA e jogue o Desafio Causa Raiz.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Barlow+Condensed:wght@600;700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+/* Layout: coluna única mobile-first (máx 760px), abas fixas no topo, mesma identidade da apresentação */
+:root{
+  --orange:#E0592A; --orange-soft:#FBE3D8; --orange-deep:#B8431B;
+  --ink:#232325; --charcoal:#3B3B3D; --muted:#6B6663; --line:#DCD7D3;
+  --paper:#FFFFFF; --paper-2:#F4F1EE; --mint:#2FB36B; --mint-ink:#1F7A48; --red:#C8372D;
+  --f-display:"Barlow Condensed","Arial Narrow",Arial,sans-serif;
+  --f-body:"Barlow",system-ui,"Segoe UI",Arial,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--ink:#F1EEEB;--charcoal:#D9D4D0;--muted:#A39C97;--line:#3A3735;--paper:#1B1A19;--paper-2:#262423;--orange-soft:#3D2418;--orange-deep:#F08A5F;--mint-ink:#6ED69C;color-scheme:dark}}
+:root[data-theme="dark"]{--ink:#F1EEEB;--charcoal:#D9D4D0;--muted:#A39C97;--line:#3A3735;--paper:#1B1A19;--paper-2:#262423;--orange-soft:#3D2418;--orange-deep:#F08A5F;--mint-ink:#6ED69C;color-scheme:dark}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{background:var(--paper);color:var(--ink);font-family:var(--f-body);font-size:17px;line-height:1.45;-webkit-font-smoothing:antialiased}
+button,input,textarea{font:inherit;color:inherit}
+button{cursor:pointer}
+:focus-visible{outline:3px solid var(--orange);outline-offset:2px}
+.wrap{max-width:760px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--paper)}
+
+header{padding-block:22px 6px}
+.eyebrow{font-family:var(--f-mono);font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--orange)}
+h1{font-family:var(--f-display);font-weight:800;font-size:clamp(38px,9vw,56px);line-height:.92;text-transform:uppercase;margin-top:6px}
+h1 em{font-style:normal;color:var(--orange)}
+.who{display:grid;grid-template-columns:1fr;gap:10px;margin-top:16px}
+.field label{display:block;font-family:var(--f-mono);font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
+.field input,textarea{width:100%;border:1.5px solid var(--line);border-radius:5px;background:var(--paper);padding:10px 12px}
+textarea{resize:vertical;min-height:78px}
+.privacy{font-size:13px;color:var(--muted);margin-top:8px}
+
+.tabs{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--paper);display:flex;gap:4px;padding-block:12px;border-bottom:1px solid var(--line)}
+.tabs button{flex:1;border:0;background:var(--paper-2);border-radius:5px;padding:10px 6px;font-family:var(--f-display);font-weight:700;font-size:18px;text-transform:uppercase;color:var(--muted)}
+.tabs button[aria-selected=true]{background:var(--ink);color:var(--paper)}
+
+section{padding-block:18px 40px}
+.sugs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.sugs button{border:1.5px solid var(--line);background:var(--paper);border-radius:999px;padding:6px 12px;font-size:15px}
+.sugs button:hover{border-color:var(--orange)}
+#msgs{display:grid;gap:12px;margin-bottom:14px}
+.msg{padding:12px 14px;border-radius:8px;max-width:92%;min-width:0;overflow-wrap:anywhere}
+.msg.u{justify-self:end;background:var(--ink);color:var(--paper)}
+.msg.a{background:var(--paper-2)}
+.msg.a .by{font-family:var(--f-mono);font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--orange);display:block;margin-bottom:4px}
+.msg p+p,.msg ul{margin-top:8px}
+.msg ul{padding-left:20px}
+.msg.err{background:#FDECEA;color:var(--red)}
+.composer{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:end}
+.btn{border:0;background:var(--orange);color:#fff;border-radius:5px;padding:12px 18px;font-family:var(--f-display);font-weight:700;font-size:19px;text-transform:uppercase}
+.btn:disabled{opacity:.5;cursor:wait}
+.btn.ghost{background:var(--paper-2);color:var(--ink)}
+
+.case{border:1.5px solid var(--line);border-radius:8px;padding:16px;margin-block:14px}
+.case h2{font-family:var(--f-display);font-weight:800;font-size:28px;text-transform:uppercase;line-height:1}
+.case .emp{font-family:var(--f-mono);font-size:12px;color:var(--muted);margin-top:4px}
+.case p{margin-top:10px}
+.case .sym{background:var(--orange-soft);border-radius:5px;padding:10px 12px;margin-top:12px}
+.case .sym b{font-family:var(--f-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--orange-deep);display:block}
+.tbl{overflow-x:auto;margin-top:14px}
+table{border-collapse:collapse;width:100%;font-size:15px;min-width:480px}
+th{font-family:var(--f-mono);font-size:11px;font-weight:600;letter-spacing:.05em;text-transform:uppercase;color:var(--muted);text-align:right;padding:6px 8px;border-bottom:1.5px solid var(--ink)}
+th:first-child,td:first-child{text-align:left}
+td{padding:7px 8px;border-bottom:1px solid var(--line);text-align:right;font-variant-numeric:tabular-nums}
+.quotes{margin-top:14px;display:grid;gap:6px}
+.quotes q{display:block;font-style:italic;color:var(--charcoal);padding-left:12px;border-left:3px solid var(--line)}
+.clue{margin-top:12px;font-size:15px}
+.clue b{font-family:var(--f-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+form .field{margin-top:12px}
+.score{border:2px solid var(--ink);border-radius:8px;padding:16px;margin-top:16px}
+.score .big{font-family:var(--f-display);font-weight:800;font-size:72px;line-height:.9;color:var(--orange)}
+.score .big small{font-size:28px;color:var(--muted)}
+.bars{display:grid;gap:8px;margin-block:12px}
+.bar{display:grid;grid-template-columns:110px 1fr 54px;gap:10px;align-items:center;font-size:15px}
+.bar i{height:10px;background:var(--paper-2);border-radius:5px;overflow:hidden;display:block}
+.bar i span{display:block;height:100%;background:var(--orange);border-radius:5px;transition:width .8s}
+.bar b{font-family:var(--f-mono);font-size:13px;text-align:right;font-variant-numeric:tabular-nums}
+.score .cp{background:var(--paper-2);border-radius:5px;padding:10px 12px;margin-top:10px}
+.score .cp b{font-family:var(--f-mono);font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--mint-ink);display:block}
+.row{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+#rk ol{list-style:none;counter-reset:r;display:grid}
+#rk li{display:grid;grid-template-columns:34px 1fr auto;gap:10px;padding:10px 0;border-bottom:1px solid var(--line);font-size:18px}
+#rk li::before{counter-increment:r;content:counter(r);font-family:var(--f-mono);color:var(--muted)}
+#rk li b{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+#rk li:nth-child(-n+3) b{color:var(--orange)}
+.muted{color:var(--muted)}
+.loading{display:inline-flex;gap:4px}
+.loading i{width:7px;height:7px;border-radius:50%;background:var(--orange);animation:b 1s infinite}
+.loading i:nth-child(2){animation-delay:.15s}.loading i:nth-child(3){animation-delay:.3s}
+@keyframes b{50%{transform:translateY(-5px);opacity:.4}}
+footer{border-top:1px solid var(--line);padding-block:18px 30px;font-size:14px;color:var(--muted)}
+footer a{color:var(--orange)}
+@media (min-width:560px){.who{grid-template-columns:1fr 1fr}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">NECXA School · Masterclass com Jessé</div>
+    <h1>Laboratório <em>Jessé·IA</em></h1>
+    <div class="who">
+      <div class="field"><label for="apelido">Seu apelido</label><input id="apelido" maxlength="40" placeholder="ex.: Ana do CX" autocomplete="nickname"></div>
+      <div class="field" id="code-f" hidden><label for="codigo">Código da turma</label><input id="codigo" maxlength="64" placeholder="o Jessé passa na hora"></div>
+    </div>
+    <p class="privacy">As interações ficam registradas no repositório da aula para estudo. Não escreva dados de clientes, CPF ou informações internas da sua empresa.</p>
+  </header>
+</div>
+
+<div class="tabs wrap" role="tablist" aria-label="Modos do laboratório">
+  <button role="tab" id="t-chat" aria-controls="p-chat" aria-selected="true">Pergunte</button>
+  <button role="tab" id="t-jogo" aria-controls="p-jogo" aria-selected="false">Desafio</button>
+  <button role="tab" id="t-rk" aria-controls="p-rk" aria-selected="false">Ranking</button>
+</div>
+
+<main class="wrap">
+  <section id="p-chat" role="tabpanel" aria-labelledby="t-chat">
+    <div class="sugs" id="sugs">
+      <button type="button">Como uso o coeficiente de variação?</button>
+      <button type="button">Volume alto e dor baixa: ataco ou não?</button>
+      <button type="button">Qual a diferença entre CSAT, NPS e CES?</button>
+      <button type="button">Como montar um AS IS → TO BE?</button>
+      <button type="button">MCP e RAG, explica simples</button>
+    </div>
+    <div id="msgs" aria-live="polite">
+      <div class="msg a"><span class="by">Jessé·IA</span><p>Oi! Sou a IA desta aula. Pergunte sobre causa raiz, priorização, pesquisas de satisfação ou IA aplicada a CX. Se quiser, traga um problema do seu dia a dia que eu te ajudo a pensar com método.</p></div>
+    </div>
+    <form class="composer" id="chat-f">
+      <label for="q" class="muted" hidden>Sua pergunta</label>
+      <textarea id="q" rows="2" maxlength="1500" placeholder="Escreva sua pergunta…" required></textarea>
+      <button class="btn" id="send">Enviar</button>
+    </form>
+  </section>
+
+  <section id="p-jogo" role="tabpanel" aria-labelledby="t-jogo" hidden>
+    <p>A IA cria um caso fictício com dados de atendimento. Ache a <b>causa raiz</b>, mostre a <b>evidência</b> e diga o que você <b>atacaria primeiro</b>. Nota de 0 a 100.</p>
+    <div class="row"><button class="btn" id="novo">Gerar caso</button></div>
+    <div id="caso"></div>
+    <form id="resp-f" hidden>
+      <div class="field"><label for="r-causa">Qual a causa raiz?</label><textarea id="r-causa" maxlength="800" required placeholder="Não é o sintoma. É o que, se removido, impede o problema de voltar."></textarea></div>
+      <div class="field"><label for="r-evid">Que dado sustenta?</label><textarea id="r-evid" maxlength="800" placeholder="Volume, CSAT, CES, resolutividade, CV, comentários, monitoria…"></textarea></div>
+      <div class="field"><label for="r-prio">O que você atacaria primeiro e por quê?</label><textarea id="r-prio" maxlength="800" placeholder="Pense em volume × dor."></textarea></div>
+      <div class="row"><button class="btn" id="avaliar">Enviar resposta</button></div>
+    </form>
+    <div id="nota"></div>
+  </section>
+
+  <section id="p-rk" role="tabpanel" aria-labelledby="t-rk" hidden>
+    <div id="rk"><p class="muted" id="rk-info">Carregando…</p><ol id="rk-list"></ol></div>
+    <div class="row"><button class="btn ghost" id="rk-up">Atualizar</button></div>
+  </section>
+</main>
+
+<footer class="wrap">
+  Masterclass <a href="https://necxaschool.com" target="_blank" rel="noopener">NECXA School</a> ·
+  <a href="https://portfolio-jesseoliveiracastro.netlify.app/" target="_blank" rel="noopener">Jessé Oliveira de Castro</a> ·
+  <a href="https://github.com/Jesse-DataDriven/Apresenta-o-NECXA" target="_blank" rel="noopener">código aberto</a> ·
+  <a href="./">voltar à apresentação</a>
+</footer>
+
+<script>
+(function(){
+"use strict";
+const $=id=>document.getElementById(id);
+const store={get(k){try{return localStorage.getItem(k)||""}catch(e){return""}},set(k,v){try{localStorage.setItem(k,v)}catch(e){}}};
+$("apelido").value=store.get("apelido");$("codigo").value=store.get("codigo");
+$("apelido").addEventListener("change",e=>store.set("apelido",e.target.value.trim()));
+$("codigo").addEventListener("change",e=>store.set("codigo",e.target.value.trim()));
+
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function md(t){
+  const lines=esc(t).replace(/\*\*(.+?)\*\*/g,"<b>$1</b>").split(/\n/);
+  let out="",list=false;
+  for(const l of lines){
+    const m=l.match(/^\s*(?:[-*•]|\d+[.)])\s+(.*)/);
+    if(m){if(!list){out+="<ul>";list=true;}out+=`<li>${m[1]}</li>`;continue;}
+    if(list){out+="</ul>";list=false;}
+    if(l.trim()) out+=`<p>${l.replace(/^#+\s*/,"")}</p>`;
+  }
+  return out+(list?"</ul>":"");
+}
+
+async function api(payload){
+  const r=await fetch("/api/ia",{method:"POST",headers:{"content-type":"application/json"},body:JSON.stringify({...payload,apelido:$("apelido").value.trim(),codigo:$("codigo").value.trim()})});
+  let j={};try{j=await r.json();}catch(e){}
+  if(r.status===401&&j.precisaCodigo){$("code-f").hidden=false;$("codigo").focus();}
+  if(r.status===404) throw new Error("O laboratório funciona no site publicado no Netlify, com a chave da IA configurada.");
+  if(!r.ok) throw new Error(j.erro||"Não consegui falar com a IA agora. Tente de novo.");
+  return j;
+}
+
+/* ---------- abas ---------- */
+const tabs=[["t-chat","p-chat"],["t-jogo","p-jogo"],["t-rk","p-rk"]];
+tabs.forEach(([t,p])=>$(t).onclick=()=>{tabs.forEach(([t2,p2])=>{$(t2).setAttribute("aria-selected",t2===t);$(p2).hidden=p2!==p;});if(p==="p-rk")loadRank();});
+
+/* ---------- chat ---------- */
+const hist=[];
+function add(cls,html){const d=document.createElement("div");d.className="msg "+cls;d.innerHTML=html;$("msgs").appendChild(d);d.scrollIntoView({behavior:"smooth",block:"nearest"});return d;}
+async function ask(q){
+  q=q.trim();if(!q)return;
+  add("u",esc(q));hist.push({role:"user",content:q});
+  $("q").value="";$("send").disabled=true;
+  const w=add("a",'<span class="by">Jessé·IA</span><span class="loading" aria-label="pensando"><i></i><i></i><i></i></span>');
+  try{const j=await api({modo:"chat",mensagens:hist});hist.push({role:"assistant",content:j.texto});w.innerHTML='<span class="by">Jessé·IA</span>'+md(j.texto);}
+  catch(e){hist.pop();w.className="msg err";w.textContent=e.message;}
+  finally{$("send").disabled=false;}
+}
+$("chat-f").addEventListener("submit",e=>{e.preventDefault();ask($("q").value);});
+$("q").addEventListener("keydown",e=>{if(e.key==="Enter"&&!e.shiftKey){e.preventDefault();ask($("q").value);}});
+document.querySelectorAll("#sugs button").forEach(b=>b.onclick=()=>ask(b.textContent));
+
+/* ---------- desafio ---------- */
+let caso=null;
+function renderCaso(c){
+  const rows=(c.dados||[]).map(d=>`<tr><td>${esc(d.tema)}</td><td>${esc(d.volume_pct)}%</td><td>${esc(d.csat)}</td><td>${esc(d.ces)}</td><td>${esc(d.resolveu_pct)}%</td><td>${esc(d.cv)}</td></tr>`).join("");
+  $("caso").innerHTML=`<div class="case"><h2>${esc(c.titulo)}</h2><div class="emp">${esc(c.empresa)} · caso fictício</div>
+  <p>${esc(c.contexto)}</p><div class="sym"><b>Sintoma</b>${esc(c.sintoma)}</div>
+  <div class="tbl"><table><thead><tr><th>Tema</th><th>Volume</th><th>CSAT</th><th>CES</th><th>Resolveu</th><th>CV</th></tr></thead><tbody>${rows}</tbody></table></div>
+  <div class="quotes">${(c.comentarios||[]).map(q=>`<q>${esc(q)}</q>`).join("")}</div>
+  <p class="clue"><b>Monitoria:</b> ${esc(c.pista_monitoria)}</p></div>`;
+}
+$("novo").onclick=async()=>{
+  $("novo").disabled=true;$("nota").innerHTML="";$("resp-f").hidden=true;
+  $("caso").innerHTML='<p class="muted" style="margin-top:14px">Montando um caso novo <span class="loading"><i></i><i></i><i></i></span></p>';
+  try{const j=await api({modo:"caso"});caso=j.caso;renderCaso(caso);$("resp-f").reset();$("resp-f").hidden=false;$("novo").textContent="Outro caso";}
+  catch(e){$("caso").innerHTML=`<div class="msg err" style="margin-top:14px">${esc(e.message)}</div>`;}
+  finally{$("novo").disabled=false;}
+};
+$("resp-f").addEventListener("submit",async e=>{
+  e.preventDefault();if(!caso)return;
+  if(!$("apelido").value.trim()){$("apelido").focus();$("nota").innerHTML='<div class="msg err" style="margin-top:14px">Coloque um apelido lá em cima para entrar no ranking.</div>';return;}
+  $("avaliar").disabled=true;$("nota").innerHTML='<p class="muted" style="margin-top:14px">Avaliando seu raciocínio <span class="loading"><i></i><i></i><i></i></span></p>';
+  try{
+    const j=await api({modo:"avaliar",caso,resposta:{causa:$("r-causa").value,evidencia:$("r-evid").value,prioridade:$("r-prio").value}});
+    const a=j.avaliacao;
+    const bar=(l,v,m)=>`<div class="bar"><span>${l}</span><i><span style="width:${v/m*100}%"></span></i><b>${v}/${m}</b></div>`;
+    $("nota").innerHTML=`<div class="score"><div class="big">${a.nota}<small> / 100</small></div>
+      <div class="bars">${bar("Causa raiz",a.causa,40)}${bar("Evidência",a.evidencia,30)}${bar("Priorização",a.priorizacao,30)}</div>
+      <p>${esc(a.feedback)}</p>
+      <div class="cp"><b>Causa mais provável</b>${esc(a.causa_provavel)}</div>
+      <p class="muted" style="margin-top:10px">Dica de método: ${esc(a.dica_metodo)}</p>
+      <div class="row"><button type="button" class="btn" id="again">Novo caso</button><button type="button" class="btn ghost" id="see-rk">Ver ranking</button></div></div>`;
+    $("again").onclick=()=>{$("novo").click();scrollTo({top:0,behavior:"smooth"});};
+    $("see-rk").onclick=()=>$("t-rk").click();
+  }catch(e){$("nota").innerHTML=`<div class="msg err" style="margin-top:14px">${esc(e.message)}</div>`;}
+  finally{$("avaliar").disabled=false;}
+});
+
+/* ---------- ranking ---------- */
+async function loadRank(){
+  try{
+    const r=await fetch("/api/ranking",{cache:"no-store"});
+    if(!r.ok) throw 0;
+    const j=await r.json();
+    $("rk-info").textContent=j.top.length?`${j.total} respostas avaliadas · melhor nota de cada apelido`:"Ninguém pontuou ainda. Seja a primeira pessoa!";
+    $("rk-list").innerHTML=j.top.map(x=>`<li><span>${esc(x.nome)}</span><b>${x.nota}</b></li>`).join("");
+  }catch(e){$("rk-info").textContent="O ranking aparece no site publicado no Netlify.";}
+}
+$("rk-up").onclick=loadRank;
+})();
+</script>
+</body>
+</html>

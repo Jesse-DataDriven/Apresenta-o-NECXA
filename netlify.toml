@@ -1,0 +1,20 @@
+[build]
+  publish = "."
+  command = "echo 'site estático, sem build'"
+  # Não gera deploy quando a função grava logs no branch "logs"
+  ignore = "[ \"$BRANCH\" = \"logs\" ]"
+
+[functions]
+  directory = "netlify/functions"
+  node_bundler = "esbuild"
+
+[[redirects]]
+  from = "/lab"
+  to = "/lab.html"
+  status = 200
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"

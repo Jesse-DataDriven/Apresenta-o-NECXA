@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 400" width="1280" height="400" role="img" aria-label="Da voz do cliente à decisão · Masterclass NECXA School">
+  <rect width="1280" height="400" fill="#232325"/>
+  <g fill="#E0592A">
+    <rect x="860" y="120" width="54" height="230"/>
+    <rect x="928" y="170" width="54" height="180" opacity=".9"/>
+    <rect x="996" y="215" width="54" height="135" opacity=".8"/>
+  </g>
+  <g fill="#5A5654">
+    <rect x="1064" y="268" width="54" height="82"/>
+    <rect x="1132" y="292" width="54" height="58"/>
+    <rect x="1200" y="312" width="54" height="38"/>
+  </g>
+  <polyline points="887,250 955,175 1023,128 1091,104 1159,90 1227,82" fill="none" stroke="#FFFFFF" stroke-width="4"/>
+  <g fill="#FFFFFF"><circle cx="887" cy="250" r="6"/><circle cx="955" cy="175" r="6"/><circle cx="1023" cy="128" r="6"/><circle cx="1091" cy="104" r="6"/><circle cx="1159" cy="90" r="6"/><circle cx="1227" cy="82" r="6"/></g>
+  <text x="64" y="86" font-family="IBM Plex Mono, Menlo, monospace" font-size="20" font-weight="600" letter-spacing="3" fill="#E0592A">NECXA SCHOOL · MASTERCLASS DE CX</text>
+  <text x="64" y="186" font-family="Barlow Condensed, Arial Narrow, Arial, sans-serif" font-size="92" font-weight="800" fill="#FFFFFF">DA VOZ DO CLIENTE</text>
+  <text x="64" y="276" font-family="Barlow Condensed, Arial Narrow, Arial, sans-serif" font-size="92" font-weight="800" fill="#FFFFFF">À <tspan fill="#E0592A">DECISÃO</tspan></text>
+  <text x="64" y="340" font-family="Barlow, Arial, sans-serif" font-size="24" fill="#D9D4D0">Jessé Oliveira de Castro · com Gabriela Amaral (CEO NECXA)</text>
+</svg>
