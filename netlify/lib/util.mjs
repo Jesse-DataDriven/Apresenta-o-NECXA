@@ -23,7 +23,19 @@ export async function claude({ system, messages, max_tokens = 700 }) {
   if (!r.ok) {
     const t = await r.text();
     console.error("Anthropic", r.status, t.slice(0, 500));
-    throw Object.assign(new Error("A IA não respondeu agora. Tente de novo em alguns segundos."), { status: 502 });
+    let tipo = "", detalhe = "";
+    try { const e = JSON.parse(t).error || {}; tipo = e.type || ""; detalhe = e.message || ""; } catch {}
+    const motivos = {
+      authentication_error: "A chave da Anthropic (ANTHROPIC_API_KEY) foi recusada. Confira se foi colada inteira.",
+      permission_error: "A chave da Anthropic não tem permissão para este modelo.",
+      not_found_error: `O modelo "${MODEL}" não foi encontrado. Ajuste ANTHROPIC_MODEL no Netlify.`,
+      rate_limit_error: "Limite de uso da Anthropic atingido. Espere alguns segundos.",
+      overloaded_error: "A Anthropic está sobrecarregada agora. Tente de novo em instantes.",
+    };
+    let msg = motivos[tipo];
+    if (!msg && /credit|balance|billing/i.test(detalhe)) msg = "Sem créditos na conta da Anthropic. Adicione créditos em console.anthropic.com → Billing.";
+    if (!msg) msg = `A IA não respondeu (Anthropic ${r.status}${tipo ? " · " + tipo : ""}${detalhe ? ": " + detalhe.slice(0, 160) : ""}).`;
+    throw Object.assign(new Error(msg), { status: 502 });
   }
   const j = await r.json();
   return j.content.filter((b) => b.type === "text").map((b) => b.text).join("\n").trim();
@@ -96,7 +108,8 @@ export async function logGitHub(entry) {
 
 /* ---------- ranking (Netlify Blobs) ---------- */
 export function rankingStore() {
-  return getStore({ name: "ranking-desafio", consistency: "strong" });
+  // Troque RANKING_STORE no Netlify (ex.: "aula") para começar um ranking zerado.
+  return getStore({ name: process.env.RANKING_STORE || "ranking-desafio", consistency: "strong" });
 }
 
 export function clean(s, max = 1500) {
