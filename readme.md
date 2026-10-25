@@ -62,23 +62,6 @@ flowchart LR
   F[Apresentação<br/>slide 10] -->|GET /api/ranking| E
 ```
 
-## Como publicar no Netlify
-
-1. No Netlify: **Add new site → Import an existing project** e escolha este repositório. Não precisa de comando de build (o `netlify.toml` já cuida disso).
-2. Em **Site configuration → Environment variables**, cadastre:
-
-| Variável | Obrigatória | Para quê |
-|---|---|---|
-| `ANTHROPIC_API_KEY` | sim | Chave da API da Anthropic ([console.anthropic.com](https://console.anthropic.com)). |
-| `GITHUB_TOKEN` | para os logs | Token *fine-grained* com acesso só a este repositório e permissão **Contents: Read and write**. |
-| `ANTHROPIC_MODEL` | não | Padrão `claude-sonnet-5-5`. Use `claude-haiku-5-5` para gastar menos. |
-| `ACCESS_CODE` | não | Código da turma. Se definido, o lab pede o código antes de responder. Bom para evitar uso fora da aula. |
-| `GITHUB_REPO` | não | Padrão `Jesse-DataDriven/Apresenta-o-NECXA`. |
-| `LOG_BRANCH` | não | Padrão `logs`. |
-| `RATE_LIMIT` | não | Interações por pessoa a cada 10 minutos. Padrão `40`. |
-
-3. Faça o deploy. O branch `logs` é criado sozinho na primeira interação, e o `netlify.toml` impede que os commits de log disparem novos deploys.
-
 ### Rodando localmente
 
 ```bash
