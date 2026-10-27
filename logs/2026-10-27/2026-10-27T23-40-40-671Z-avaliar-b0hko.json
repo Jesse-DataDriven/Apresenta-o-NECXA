@@ -1,0 +1,74 @@
+{
+  "modo": "avaliar",
+  "apelido": "LabD",
+  "modelo": "claude-sonnet-5-5",
+  "quando": "2026-10-27T23:40:40.671Z",
+  "caso": {
+    "titulo": "O técnico que ninguém sabe onde está",
+    "empresa": "operadora de internet residencial",
+    "contexto": "Uma operadora regional de fibra óptica atende cerca de 40 mil ligações por mês. Nas últimas seis semanas, a taxa de recontato em 7 dias subiu e o NPS caiu 9 pontos. A liderança já revisou escalas e metas de TMA sem melhora.",
+    "sintoma": "Aumento de recontatos e queda de satisfação, com clientes ligando várias vezes sobre o mesmo assunto e reclamando de ter que repetir a história a cada contato.",
+    "dados": [
+      {
+        "tema": "Segunda via de fatura",
+        "volume_pct": 32,
+        "csat": 4.5,
+        "ces": 2,
+        "resolveu_pct": 94,
+        "cv": 0.35
+      },
+      {
+        "tema": "Lentidão ou queda de conexão",
+        "volume_pct": 24,
+        "csat": 3.6,
+        "ces": 3.9,
+        "resolveu_pct": 71,
+        "cv": 0.62
+      },
+      {
+        "tema": "Visita técnica e agendamento",
+        "volume_pct": 20,
+        "csat": 2.3,
+        "ces": 5.8,
+        "resolveu_pct": 38,
+        "cv": 0.41
+      },
+      {
+        "tema": "Mudança de plano",
+        "volume_pct": 14,
+        "csat": 4.1,
+        "ces": 2.8,
+        "resolveu_pct": 88,
+        "cv": 0.55
+      },
+      {
+        "tema": "Contestação de cobrança",
+        "volume_pct": 10,
+        "csat": 3.4,
+        "ces": 4.2,
+        "resolveu_pct": 63,
+        "cv": 1.35
+      }
+    ],
+    "comentarios": [
+      "Liguei três vezes hoje e cada atendente me disse algo diferente sobre a visita do técnico.",
+      "Ninguém sabe me dizer se o técnico já saiu ou se a visita foi cancelada, só pedem para eu esperar.",
+      "O atendente foi educado, mas parecia tão no escuro quanto eu. Tive que abrir outro chamado só para confirmar o horário."
+    ],
+    "pista_monitoria": "Em várias ligações sobre visita técnica, os atendentes dizem que não conseguem ver o andamento da visita na tela e orientam o cliente a aguardar ou abrem um novo chamado para checar com a equipe de campo."
+  },
+  "resposta": {
+    "causa": "Demora em visita técnica",
+    "evidencia": "Comentário no csat",
+    "prioridade": "Cadastrar no crachá do colaborador uma etiqueta de rfid para mostrar onde o colaborador está e quanto tempo falta para ele chegar na casa do cliente"
+  },
+  "avaliacao": {
+    "causa": 15,
+    "evidencia": 8,
+    "priorizacao": 17,
+    "nota": 40,
+    "causa_provavel": "Falta de integração entre o sistema de campo e o de atendimento: o atendente não enxerga o status da visita técnica, e isso gera informações divergentes, chamados duplicados e recontato.",
+    "feedback": "Você acertou ao escolher visita técnica como o tema central, e a ideia de dar visibilidade de onde está o técnico vai na direção certa, pois o problema é mesmo falta de informação. Só que \"demora na visita\" ainda é sintoma. A causa raiz que os dados apontam é que o atendente não vê o andamento da visita na tela, como mostra a monitoria. Faltou também citar números: a visita técnica tem 20% do volume, CSAT 2,3, CES 5,8 e só 38% de resolutividade, a pior dor do caso. Uma solução mais simples e rápida seria integrar o status da visita (agendada, a caminho, concluída, cancelada) ao sistema do atendimento, antes de pensar em RFID no crachá.",
+    "dica_metodo": "Use os 5 Porquês partindo de \"cliente recontata sobre a visita\" até chegar à falta de visibilidade do status no sistema, e cite os números do caso (volume × CSAT/CES/resolutividade) para sustentar."
+  }
+}
