@@ -1,0 +1,74 @@
+{
+  "modo": "avaliar",
+  "apelido": "Jesse",
+  "modelo": "claude-sonnet-5-5",
+  "quando": "2026-10-27T23:33:10.744Z",
+  "caso": {
+    "titulo": "O prazo que ninguém viu passar",
+    "empresa": "banco digital com cartão de crédito",
+    "contexto": "A operação atende cerca de 400 mil clientes de cartão por app e chat. Nas últimas seis semanas, o CSAT geral caiu e as reclamações no app e nas redes aumentaram. Não houve mudança de equipe, de sistema nem de volume total de contatos.",
+    "sintoma": "A liderança vê o CSAT geral cair de 4,0 para 3,5 e as reclamações formais subirem, mas não sabe em qual tema agir primeiro. A reciclagem de atendentes feita no mês passado não mudou o resultado.",
+    "dados": [
+      {
+        "tema": "Segunda via de fatura e vencimento",
+        "volume_pct": 28,
+        "csat": 4.4,
+        "ces": 2.1,
+        "resolveu_pct": 92,
+        "cv": 0.35
+      },
+      {
+        "tema": "Bloqueio e desbloqueio de cartão",
+        "volume_pct": 22,
+        "csat": 4.2,
+        "ces": 2.4,
+        "resolveu_pct": 90,
+        "cv": 0.4
+      },
+      {
+        "tema": "Contestação de compra não reconhecida",
+        "volume_pct": 18,
+        "csat": 2.1,
+        "ces": 5.9,
+        "resolveu_pct": 41,
+        "cv": 0.48
+      },
+      {
+        "tema": "Parcelamento de fatura",
+        "volume_pct": 17,
+        "csat": 3.4,
+        "ces": 4,
+        "resolveu_pct": 68,
+        "cv": 1.25
+      },
+      {
+        "tema": "Aumento de limite",
+        "volume_pct": 15,
+        "csat": 3.6,
+        "ces": 3.5,
+        "resolveu_pct": 70,
+        "cv": 0.8
+      }
+    ],
+    "comentarios": [
+      "Só vi a compra na fatura e, quando liguei, disseram que o prazo já tinha passado. Como eu ia contestar algo que nem sabia que existia?",
+      "A atendente foi educada, mas disse que não podia fazer nada. Estou pagando por uma compra que não fiz.",
+      "Já falei três vezes e todo mundo me deu a mesma resposta: prazo vencido. Ninguém me avisou do prazo."
+    ],
+    "pista_monitoria": "A monitoria não achou erro de conduta nem de conhecimento: os atendentes seguem corretamente a regra de contestar só até 7 dias após a compra, e o cliente só descobre o prazo ao ligar."
+  },
+  "resposta": {
+    "causa": "Não é o sistema é pessoas",
+    "evidencia": "Volume, CSAT,",
+    "prioridade": "Treinamento e capacitação"
+  },
+  "avaliacao": {
+    "causa": 5,
+    "evidencia": 4,
+    "priorizacao": 6,
+    "nota": 15,
+    "causa_provavel": "Regra de contestação com prazo de 7 dias, que o cliente não conhece e só descobre ao ligar, gerando falha de comunicação e de processo, e não de capacitação.",
+    "feedback": "Você citou volume e CSAT como base, o que é um bom começo, mas faltou mostrar os números do caso. A conclusão de que o problema são pessoas vai contra os dados: a monitoria não achou erro de conduta nem de conhecimento, e a reciclagem do mês passado não mudou nada. O tema crítico é a contestação de compra não reconhecida, com CSAT 2,1, CES 5,9 e só 41% de resolutividade, e ele nem apareceu na sua resposta. Da próxima vez, aponte o tema, cite os números e explique por que a causa está na regra, no processo ou na comunicação do prazo.",
+    "dica_metodo": "Use os 5 Porquês, partindo de 'CSAT de 2,1 em contestação' até chegar à regra do prazo de 7 dias que o cliente não conhece, e priorize por volume × dor."
+  }
+}
