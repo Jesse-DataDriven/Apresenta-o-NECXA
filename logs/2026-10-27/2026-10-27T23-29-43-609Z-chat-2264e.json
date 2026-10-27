@@ -1,0 +1,8 @@
+{
+  "modo": "chat",
+  "apelido": "Mari",
+  "modelo": "claude-sonnet-5-5",
+  "quando": "2026-10-27T23:29:43.609Z",
+  "pergunta": "Como uso o coeficiente de variação?",
+  "resposta": "O CV mede o quanto um indicador varia em relação à sua média. É útil para saber **que tipo de problema** você tem antes de decidir a solução.\n\n**Cálculo:** CV = desvio padrão ÷ média\n\n**Regra prática do Jessé:**\n- **CV abaixo de 1:** o problema é do processo como um todo. O foco é redesenhar o processo.\n- **CV acima de 1:** o problema está na dispersão, com alguns casos, turnos, equipes ou pessoas muito fora da curva. O foco é reduzir variação, padronizar e treinar.\n\n**Passo a passo:**\n1. Pegue os temas do seu Pareto (os que concentram o volume).\n2. Escolha um indicador por tema: TMA, volume diário ou nota.\n3. Calcule o CV de cada um.\n4. Decida o tipo de ação conforme o resultado.\n\n**Exemplo:** o tema \"contestação de compra\" tem TMA médio de 12 min.\n- Se o CV é baixo, todo mundo demora, então o problema é o fluxo (URA longa, transferência sem contexto).\n- Se o CV é alto, alguns atendentes ou turnos resolvem rápido e outros demoram muito. Aí vale investigar o que os melhores fazem e padronizar.\n\nLembre-se de que o CV não diz a causa raiz, só aponta para onde olhar. Depois use 5 porquês para aprofundar.\n\nQual indicador você pensa em analisar primeiro, e em qual tema?"
+}
