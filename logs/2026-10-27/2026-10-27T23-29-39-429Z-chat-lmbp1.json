@@ -1,0 +1,8 @@
+{
+  "modo": "chat",
+  "apelido": "LabD",
+  "modelo": "claude-sonnet-5-5",
+  "quando": "2026-10-27T23:29:39.429Z",
+  "pergunta": "Negativa de crédito",
+  "resposta": "Boa, esse é um tema clássico em contact center: o cliente não aceita o \"não\" e volta a ligar. Antes de qualquer solução, vamos entender o tamanho e o tipo de dor.\n\n**Perguntas para começar:**\n1. **Volume:** onde \"negativa de crédito\" aparece no seu Pareto? É top 3 das jornadas? E no Reclame Aqui?\n2. **Dor:** qual a correlação desse tema com o CSAT? E o CES e a taxa de recontato?\n3. **CV:** o TMA ou a nota desse tema tem CV abaixo ou acima de 1?\n   - Abaixo de 1: o problema é do processo todo (redesenho).\n   - Acima de 1: há dispersão por turno, equipe ou pessoa (padronização e treino).\n4. **Sintoma:** os comentários reclamam da *decisão* ou da *forma como ela foi comunicada* (motivo vago, sem próximo passo, sem prazo)?\n\n**Complemento:** em negativa de crédito, a decisão costuma ser regulada e não muda. O que dá para melhorar é a explicação, o caminho para reverter e a proatividade da comunicação"
+}
