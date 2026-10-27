@@ -1,0 +1,74 @@
+{
+  "modo": "avaliar",
+  "apelido": "Gabriela",
+  "modelo": "claude-sonnet-5-5",
+  "quando": "2026-10-27T23:34:41.517Z",
+  "caso": {
+    "titulo": "O carro reserva que nunca chega",
+    "empresa": "seguradora de automóveis",
+    "contexto": "A seguradora atende cerca de 40 mil contatos por mês em telefone e chat. A equipe é estável, o treinamento está em dia e o tempo médio de atendimento não mudou. Mesmo assim, a satisfação geral caiu e as reclamações em canais públicos aumentaram.",
+    "sintoma": "A liderança vê queda do CSAT geral, aumento do recontato em 7 dias e mais reclamações públicas, sem mudança no tempo de atendimento nem na rotatividade.",
+    "dados": [
+      {
+        "tema": "Segunda via de boleto e apólice",
+        "volume_pct": 31,
+        "csat": 4.5,
+        "ces": 1.8,
+        "resolveu_pct": 95,
+        "cv": 0.35
+      },
+      {
+        "tema": "Carro reserva após sinistro",
+        "volume_pct": 17,
+        "csat": 2.1,
+        "ces": 5.9,
+        "resolveu_pct": 38,
+        "cv": 0.52
+      },
+      {
+        "tema": "Assistência 24h (guincho)",
+        "volume_pct": 22,
+        "csat": 4.1,
+        "ces": 2.7,
+        "resolveu_pct": 88,
+        "cv": 0.6
+      },
+      {
+        "tema": "Renovação e reajuste",
+        "volume_pct": 14,
+        "csat": 3.4,
+        "ces": 4,
+        "resolveu_pct": 70,
+        "cv": 1.35
+      },
+      {
+        "tema": "Acompanhamento de reparo na oficina",
+        "volume_pct": 16,
+        "csat": 3.2,
+        "ces": 4.4,
+        "resolveu_pct": 62,
+        "cv": 0.8
+      }
+    ],
+    "comentarios": [
+      "Fui bem tratado, mas disseram que o carro reserva só sai depois que a oficina enviar o orçamento, e isso levou uma semana.",
+      "A atendente foi educada e explicou a regra, mas fiquei 9 dias sem carro e sem poder fazer nada.",
+      "Liguei três vezes pelo mesmo motivo e todas me deram a mesma resposta: ainda não está liberado."
+    ],
+    "pista_monitoria": "Os atendentes seguem a política à risca e negam qualquer exceção, mesmo quando o cliente está sem carro há dias e o orçamento da oficina ainda não chegou."
+  },
+  "resposta": {
+    "causa": "Não existe exceção e flexibilidade para resolver casos críticos",
+    "evidencia": "Rechamado, tempo total de resolução de problemas",
+    "prioridade": "Revisaria as regras de negocios e daria mais flexibilidade ao time"
+  },
+  "avaliacao": {
+    "causa": 28,
+    "evidencia": 10,
+    "priorizacao": 18,
+    "nota": 56,
+    "causa_provavel": "A regra que condiciona a liberação do carro reserva ao envio do orçamento pela oficina, sem exceção para clientes parados há dias, gera espera longa, recontato e baixa resolutividade (38%).",
+    "feedback": "Você acertou ao apontar a falta de exceção como um problema de regra e não de atendente, e isso conversa bem com a pista da monitoria. Faltou sustentar com os números do caso: carro reserva tem CSAT 2,1, CES 5,9 e só 38% de resolução, num tema com 17% do volume. Citar 'rechamado' e 'tempo de resolução' sem os dados fica genérico. Sua priorização também ficou vaga: diga qual tema atacar primeiro e qual regra mudar, por exemplo liberar o carro após X dias sem orçamento ou criar um prazo de SLA com a oficina.",
+    "dica_metodo": "Use a matriz volume × dor para colocar carro reserva (17% do volume, pior CSAT e CES) no topo, e aplique os 5 Porquês para chegar à dependência do orçamento da oficina."
+  }
+}
