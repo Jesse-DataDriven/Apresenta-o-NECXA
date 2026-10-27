@@ -1,0 +1,8 @@
+{
+  "modo": "chat",
+  "apelido": "anônimo",
+  "modelo": "claude-sonnet-5-5",
+  "quando": "2026-10-27T23:30:20.227Z",
+  "pergunta": "Como uso o coeficiente de variação?",
+  "resposta": "O CV (coeficiente de variação) mostra se o problema é **geral** ou **concentrado**.\n\n**Como calcular:** CV = desvio padrão ÷ média, do indicador de cada tema (TMA, volume diário, nota).\n\n**Regra prática da aula:**\n- **CV < 1:** o problema é do **processo como um todo**. Foco em redesenhar o processo (AS IS → TO BE).\n- **CV > 1:** o problema está na **dispersão**. Alguns casos, turnos, equipes ou pessoas estão muito fora da curva. Foco em reduzir variação, padronizar e treinar.\n\n**Exemplo de contact center:**\nVocê pega o TMA de \"contestação de compra\" por atendente. Se o CV for 0,3, todo mundo demora, então o gargalo é o processo (URA longa, transferência sem contexto). Se for 1,4, alguns atendentes resolvem em 4 minutos e outros em 25. Aí vale investigar o que os melhores fazem e padronizar.\n\n**Passo a passo:**\n1. Comece pelo Pareto e escolha os temas de maior volume.\n2. Calcule o CV do indicador de cada tema.\n3. Classifique cada um (processo ou dispersão).\n4. Cruze com a correlação com o CSAT para priorizar.\n\nQual indicador você pensa em analisar primeiro: TMA, volume ou nota? E por qual corte (atendente, turno, equipe)?"
+}
