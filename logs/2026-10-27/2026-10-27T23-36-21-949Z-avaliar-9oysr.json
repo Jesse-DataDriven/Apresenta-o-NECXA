@@ -1,0 +1,74 @@
+{
+  "modo": "avaliar",
+  "apelido": "Miranda",
+  "modelo": "claude-sonnet-5-5",
+  "quando": "2026-10-27T23:36:21.949Z",
+  "caso": {
+    "titulo": "Aprovado, mas sem dinheiro",
+    "empresa": "seguradora de automóveis",
+    "contexto": "A seguradora atende cerca de 60 mil contatos por mês entre telefone, chat e app. Há dois meses o CSAT geral caiu 0,4 ponto, embora equipe, horários e ferramentas sejam os mesmos. A liderança já cogitou contratar mais agentes.",
+    "sintoma": "CSAT e CES pioraram, o recontato em 7 dias subiu 15% e a fila de espera cresceu nos horários de pico. As ligações ficaram mais longas e ninguém sabe onde está o problema.",
+    "dados": [
+      {
+        "tema": "Segunda via de boleto e apólice",
+        "volume_pct": 28,
+        "csat": 4.4,
+        "ces": 2.1,
+        "resolveu_pct": 92,
+        "cv": 0.45
+      },
+      {
+        "tema": "Status de sinistro",
+        "volume_pct": 24,
+        "csat": 2.3,
+        "ces": 5.8,
+        "resolveu_pct": 41,
+        "cv": 0.52
+      },
+      {
+        "tema": "Assistência 24h e guincho",
+        "volume_pct": 14,
+        "csat": 3.9,
+        "ces": 3.4,
+        "resolveu_pct": 81,
+        "cv": 1.2
+      },
+      {
+        "tema": "Cotação e renovação",
+        "volume_pct": 18,
+        "csat": 3.8,
+        "ces": 3.5,
+        "resolveu_pct": 78,
+        "cv": 0.8
+      },
+      {
+        "tema": "Alteração de cobertura e cancelamento",
+        "volume_pct": 16,
+        "csat": 3.4,
+        "ces": 4.2,
+        "resolveu_pct": 70,
+        "cv": 1.1
+      }
+    ],
+    "comentarios": [
+      "Recebi aviso de sinistro aprovado e esperei o pagamento. Dias depois pediram mais documentos e orçamento da oficina.",
+      "Liguei três vezes e todos foram educados, mas todos me deram a mesma resposta vaga: aprovado, aguarde.",
+      "Ninguém me disse o que faltava. Só descobri a pendência no quarto contato."
+    ],
+    "pista_monitoria": "Os agentes seguem o roteiro e informam corretamente o status 'aprovado' do sistema, mas a mensagem automática não cita as pendências para o pagamento, e o atendimento não as explica."
+  },
+  "resposta": {
+    "causa": "Falta de documentação na jornada, com definições do que acontece em cada etapa, trazendo transparência para o cliente.",
+    "evidencia": "A monitoria traz a informação de que a mensagem nao cita pendências,  só traz o status como aprovado, sem continuidade e clareza",
+    "prioridade": "Atacaria a criação de jornada do cliente para definição de etapas através de um pdca."
+  },
+  "avaliacao": {
+    "causa": 28,
+    "evidencia": 14,
+    "priorizacao": 15,
+    "nota": 57,
+    "causa_provavel": "O status 'aprovado' do sinistro é comunicado sem as pendências (documentos, orçamento da oficina) para o pagamento, por falha no processo e na mensagem automática, e os agentes não têm orientação para explicá-las. Isso gera recontato e chamadas longas.",
+    "feedback": "Você identificou corretamente que o problema está na falta de transparência sobre as etapas e usou bem a pista da monitoria: a mensagem automática só diz 'aprovado' e não cita pendências. Isso mostra que você foi além do sintoma 'CSAT caiu'. Para melhorar, ligue a causa ao tema Status de sinistro, que tem 24% do volume, CSAT 2,3, CES 5,8 e só 41% de resolução, e cite os recontatos dos comentários (3 ligações, pendência descoberta no 4º contato). Sua ação também ficou genérica: mapear a jornada inteira com PDCA é amplo demais. Atacar primeiro a mensagem de status e o script, incluindo as pendências, teria mais impacto, e vale dizer que contratar mais agentes não resolve.",
+    "dica_metodo": "Use a matriz volume × dor para destacar Status de sinistro (alto volume, pior CSAT/CES), e os 5 Porquês para chegar à mensagem automática sem pendências."
+  }
+}
