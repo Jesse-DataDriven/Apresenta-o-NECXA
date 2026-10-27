@@ -1,0 +1,8 @@
+{
+  "modo": "chat",
+  "apelido": "Carol",
+  "modelo": "claude-sonnet-5-5",
+  "quando": "2026-10-27T23:29:54.488Z",
+  "pergunta": "MCP e RAG, explica simples",
+  "resposta": "Bora simplificar! 😊\n\n**MCP (Model Context Protocol)**\nÉ o **conector** da IA com as suas ferramentas. Pense numa porta USB-C: um padrão só para ligar a IA ao JIRA, e-mail, Drive, banco de dados ou plataforma de VoC.\n- *Exemplo:* a IA lê os comentários do Birdie, cruza com o volume por jornada e abre um card no JIRA para a área dona.\n\n**RAG (Retrieval-Augmented Generation)**\nÉ a IA **consultar seus documentos antes de responder** e citar a fonte. Ela busca os trechos certos (políticas, roteiros, base de conhecimento) em vez de \"achar\" a resposta.\n- *Exemplo:* o atendente pergunta \"qual o prazo de contestação no cartão?\". A IA busca na política vigente, responde e mostra de onde veio. Resultado: menos erro de procedimento e menos recontato.\n\n**Resumindo**\n- **MCP** = *com o que* a IA se conecta (ferramentas e dados).\n- **RAG** = *em que* ela se baseia para responder (seus documentos).\n\nOs dois se complementam, mas lembre: o método vem antes da ferramenta, e a decisão continua humana.\n\nQuer que eu mostre como isso entraria no seu contact center? Me conta qual dor você tem hoje (sem dados pessoais de clientes, ok?)."
+}
