@@ -1,0 +1,74 @@
+{
+  "modo": "avaliar",
+  "apelido": "Li",
+  "modelo": "claude-sonnet-5-5",
+  "quando": "2026-10-27T23:36:24.318Z",
+  "caso": {
+    "titulo": "A reentrega que só podia ser pedida na semana seguinte",
+    "empresa": "varejo online de eletrodomésticos e utilidades com entrega própria e transportadoras parceiras",
+    "contexto": "Na última campanha de vendas o volume de pedidos dobrou. A equipe foi reforçada e treinada de novo, mas a satisfação segue caindo. A liderança já revisou os scripts duas vezes sem melhora.",
+    "sintoma": "O CSAT geral caiu de 4,1 para 3,3 em dois meses, o recontato em até 7 dias subiu para 38% e as reclamações em canais públicos aumentaram, mesmo com o time mais treinado.",
+    "dados": [
+      {
+        "tema": "Atraso na entrega",
+        "volume_pct": 28,
+        "csat": 2.1,
+        "ces": 5.9,
+        "resolveu_pct": 34,
+        "cv": 0.45
+      },
+      {
+        "tema": "Pedido não entregue ou extraviado",
+        "volume_pct": 14,
+        "csat": 1.9,
+        "ces": 6.1,
+        "resolveu_pct": 28,
+        "cv": 0.52
+      },
+      {
+        "tema": "Consulta de rastreio",
+        "volume_pct": 31,
+        "csat": 4.3,
+        "ces": 2.3,
+        "resolveu_pct": 91,
+        "cv": 0.38
+      },
+      {
+        "tema": "Troca de produto",
+        "volume_pct": 12,
+        "csat": 3.9,
+        "ces": 3.1,
+        "resolveu_pct": 82,
+        "cv": 1.15
+      },
+      {
+        "tema": "Segunda via de nota fiscal",
+        "volume_pct": 15,
+        "csat": 4,
+        "ces": 2.8,
+        "resolveu_pct": 88,
+        "cv": 0.9
+      }
+    ],
+    "comentarios": [
+      "A atendente foi super educada, mas disse que só posso pedir nova entrega daqui a uma semana, mesmo com o pacote sumido.",
+      "Já liguei três vezes. Todo mundo me atende bem e me dá a mesma resposta: aguardar.",
+      "O rastreio diz que a entrega falhou há 5 dias e ninguém pode fazer nada até o prazo passar."
+    ],
+    "pista_monitoria": "Os atendimentos de atraso e extravio tiveram nota alta de qualidade, pois os atendentes seguiram a política à risca, que bloqueia reenvio ou reembolso antes de 7 dias corridos."
+  },
+  "resposta": {
+    "causa": "São os pedidos que não foram entregues  ou extraviados",
+    "evidencia": "Csat, ces e resolutividade",
+    "prioridade": "Os pedidos não entregues, pois apesar do volume não ser tão alto é o que mais gera insatisfação e CES alto"
+  },
+  "avaliacao": {
+    "causa": 14,
+    "evidencia": 14,
+    "priorizacao": 14,
+    "nota": 42,
+    "causa_provavel": "A política que bloqueia reenvio ou reembolso antes de 7 dias corridos impede a resolução de atrasos e extravios, gerando recontato, CES alto e CSAT baixo mesmo com atendimento de qualidade.",
+    "feedback": "Você acertou ao identificar o tema de extravio como o de maior dor, com CSAT 1,9, CES 6,1 e resolutividade de 28%, e citou as métricas certas. Mas \"pedidos não entregues\" é o sintoma, não a causa raiz: faltou dizer por que o cliente não é resolvido. A pista da monitoria e os comentários apontam para a regra dos 7 dias, que obriga o atendente educado a responder só \"aguarde\". Na priorização, considere também o atraso na entrega (28% do volume, CSAT 2,1) junto com o extravio (14%), porque somados chegam a 42% do volume com a mesma regra por trás. Isso muda o cálculo de volume × dor.",
+    "dica_metodo": "Use os 5 Porquês, partindo de \"cliente recontata\" até chegar à regra de 7 dias, e depois monte a matriz volume × dor para priorizar."
+  }
+}
