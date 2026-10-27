@@ -1,0 +1,74 @@
+{
+  "modo": "avaliar",
+  "apelido": "Carol",
+  "modelo": "claude-sonnet-5-5",
+  "quando": "2026-10-27T23:36:37.369Z",
+  "caso": {
+    "titulo": "Fatura maior que o esperado",
+    "empresa": "banco digital com cartão de crédito",
+    "contexto": "Há dois meses o banco lançou a opção de parcelar a fatura direto no app. Desde então o volume de contatos cresceu e a nota do cartão caiu. A equipe foi treinada e segue o roteiro.",
+    "sintoma": "A liderança vê queda de CSAT no cartão, mais reclamações nas lojas de aplicativos e contatos repetidos em até 7 dias, mesmo com atendentes cordiais e aderentes ao roteiro.",
+    "dados": [
+      {
+        "tema": "Consulta de fatura e vencimento",
+        "volume_pct": 34,
+        "csat": 4.5,
+        "ces": 2,
+        "resolveu_pct": 92,
+        "cv": 0.4
+      },
+      {
+        "tema": "Contestação de juros e encargos",
+        "volume_pct": 21,
+        "csat": 2.1,
+        "ces": 5.8,
+        "resolveu_pct": 41,
+        "cv": 0.45
+      },
+      {
+        "tema": "Bloqueio e desbloqueio de cartão",
+        "volume_pct": 18,
+        "csat": 4.2,
+        "ces": 2.6,
+        "resolveu_pct": 88,
+        "cv": 0.5
+      },
+      {
+        "tema": "Aumento de limite",
+        "volume_pct": 15,
+        "csat": 3.4,
+        "ces": 4,
+        "resolveu_pct": 70,
+        "cv": 1.3
+      },
+      {
+        "tema": "Compra não reconhecida",
+        "volume_pct": 12,
+        "csat": 3.8,
+        "ces": 3.5,
+        "resolveu_pct": 76,
+        "cv": 0.7
+      }
+    ],
+    "comentarios": [
+      "Parcelei a fatura achando que eram parcelas sem custo extra e o total ficou bem maior. Ninguém me avisou.",
+      "A atendente foi muito educada, mas só repetiu que os juros estão corretos. Eu só queria entender por que não vi isso no app.",
+      "Liguei duas vezes sobre a mesma cobrança e as duas me deram a mesma resposta, sem solução."
+    ],
+    "pista_monitoria": "Os atendentes seguem o roteiro à risca e com cordialidade, mas ele não prevê explicar o custo do parcelamento, e o cliente diz que só viu o valor total depois de contratar."
+  },
+  "resposta": {
+    "causa": "Falta de um aviso sobre os encargos e juros ao selecionar o parcelamento",
+    "evidencia": "Volume e CSAT, comentarios tambem auxiliam",
+    "prioridade": "Colocar um popover quando o cliente seleciona a opçao de fazer o parcelamento informando sobre os encargos. \nAdicionar a informaçao no help center e base de conhecimento dentro do artigo dedicado a explicar a funcionalidade / contrataçao"
+  },
+  "avaliacao": {
+    "causa": 34,
+    "evidencia": 14,
+    "priorizacao": 22,
+    "nota": 70,
+    "causa_provavel": "O fluxo de parcelamento no app não deixa claro o custo total e os juros antes da contratação, e o roteiro de atendimento não prevê explicar esse custo, o que gera contestações e recontatos.",
+    "feedback": "Você separou bem o sintoma da causa: identificou a falta de transparência dos encargos no momento da contratação, um problema de sistema e processo, e não de atendente. A solução do popover no app ataca a origem do problema, o que é um ponto forte. Falta sustentar com números do caso: a contestação de juros tem 21% do volume, CSAT 2,1, CES 5,8 e só 41% de resolução, e é isso que justifica a prioridade. Faltou também tratar o roteiro, que não prevê explicar o custo do parcelamento, e mencionar o contato repetido em 7 dias e o 'Ninguém me avisou' dos comentários.",
+    "dica_metodo": "Use a matriz volume × dor para posicionar cada tema com seus números e, depois, os 5 porquês para ligar o recontato ao roteiro sem a explicação do custo."
+  }
+}
