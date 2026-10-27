@@ -1,0 +1,74 @@
+{
+  "modo": "avaliar",
+  "apelido": "Mari",
+  "modelo": "claude-sonnet-5-5",
+  "quando": "2026-10-27T23:35:27.971Z",
+  "caso": {
+    "titulo": "O técnico não veio, e agora?",
+    "empresa": "operadora de internet residencial",
+    "contexto": "Uma operadora regional de fibra óptica viu o CSAT geral cair 0,4 ponto em dois meses, mesmo com o tempo médio de atendimento dentro da meta. O recontato em 7 dias subiu e as reclamações em redes sociais cresceram.",
+    "sintoma": "A liderança vê queda de CSAT, mais recontato e clientes irritados, mesmo com atendentes cordiais e aderentes ao script.",
+    "dados": [
+      {
+        "tema": "Segunda via de fatura",
+        "volume_pct": 32,
+        "csat": 4.3,
+        "ces": 2.2,
+        "resolveu_pct": 91,
+        "cv": 0.4
+      },
+      {
+        "tema": "Lentidão na conexão",
+        "volume_pct": 22,
+        "csat": 3.6,
+        "ces": 4,
+        "resolveu_pct": 68,
+        "cv": 1.35
+      },
+      {
+        "tema": "Reagendamento de visita técnica",
+        "volume_pct": 18,
+        "csat": 2.1,
+        "ces": 5.9,
+        "resolveu_pct": 41,
+        "cv": 0.45
+      },
+      {
+        "tema": "Cancelamento",
+        "volume_pct": 18,
+        "csat": 3.4,
+        "ces": 4.5,
+        "resolveu_pct": 70,
+        "cv": 1.1
+      },
+      {
+        "tema": "Mudança de endereço",
+        "volume_pct": 10,
+        "csat": 3.9,
+        "ces": 3.5,
+        "resolveu_pct": 74,
+        "cv": 0.9
+      }
+    ],
+    "comentarios": [
+      "O técnico não apareceu e ninguém avisou. A atendente foi educada, mas só tinha vaga para daqui a seis dias.",
+      "A visita foi cancelada por eles e eu entrei na fila de novo, como se fosse um pedido novo.",
+      "Liguei três vezes pelo mesmo problema. Todos são gentis, mas ninguém me dá uma data certa."
+    ],
+    "pista_monitoria": "Os atendentes seguem o script, mas o sistema de agenda não permite priorizar clientes com visita cancelada pela empresa, que entram na fila comum de novos agendamentos."
+  },
+  "resposta": {
+    "causa": "falha no processo de reagendamento e priorização de visitas técnicas canceladas pela própria empresa, e o sistema de agendamento que é lento",
+    "evidencia": "Nota do CSAT e volume de contato",
+    "prioridade": "Priorização de visitas pq é a menor nota"
+  },
+  "avaliacao": {
+    "causa": 30,
+    "evidencia": 14,
+    "priorizacao": 19,
+    "nota": 63,
+    "causa_provavel": "O sistema de agenda não permite priorizar clientes cujas visitas foram canceladas pela própria empresa, que caem na fila comum de novos agendamentos, gerando espera longa, recontato e baixa resolutividade.",
+    "feedback": "Você acertou ao ir direto para o processo de reagendamento e priorização de visitas canceladas pela empresa, e não parou no sintoma de atendentes ou script. Isso é separar causa de sintoma. Falta precisão no trecho \"sistema de agendamento que é lento\": o problema não é velocidade, e sim uma regra que não distingue visita cancelada pela empresa de pedido novo. A evidência ficou rasa: cite os números do tema (CSAT 2,1, CES 5,9, resolutividade 41%, 18% do volume) e os comentários, como \"entrei na fila de novo\". Na priorização, escolher o reagendamento está certo, mas \"é a menor nota\" ignora o critério volume × dor. Com 18% do volume e a maior dor, ele é o ponto de maior alavanca, enquanto segunda via (32%) tem baixa dor e é o distrator.",
+    "dica_metodo": "Use uma matriz volume × dor (volume do tema contra CSAT/CES) para justificar a priorização, combinada com os 5 Porquês para chegar à regra do sistema de agenda."
+  }
+}
