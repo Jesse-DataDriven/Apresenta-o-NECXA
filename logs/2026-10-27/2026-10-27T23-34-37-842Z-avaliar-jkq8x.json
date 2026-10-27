@@ -1,0 +1,74 @@
+{
+  "modo": "avaliar",
+  "apelido": "LabD",
+  "modelo": "claude-sonnet-5-5",
+  "quando": "2026-10-27T23:34:37.842Z",
+  "caso": {
+    "titulo": "A fatura que surpreende no fim do mês",
+    "empresa": "banco digital com cartão de crédito",
+    "contexto": "Um banco digital cresceu rápido na base de cartões e atende por chat e telefone. Nas últimas seis semanas o CSAT caiu e o recontato em 7 dias subiu. A equipe está estável, sem troca de sistema ou de política.",
+    "sintoma": "A liderança vê queda do CSAT geral, mais recontatos e mais pedidos de cancelamento de cartão, com o tempo médio de atendimento inalterado.",
+    "dados": [
+      {
+        "tema": "Dúvida sobre juros e encargos na fatura",
+        "volume_pct": 24,
+        "csat": 2.1,
+        "ces": 5.8,
+        "resolveu_pct": 58,
+        "cv": 0.42
+      },
+      {
+        "tema": "Consulta de limite disponível",
+        "volume_pct": 31,
+        "csat": 4.3,
+        "ces": 2,
+        "resolveu_pct": 93,
+        "cv": 0.55
+      },
+      {
+        "tema": "Contestação de compra",
+        "volume_pct": 14,
+        "csat": 3.1,
+        "ces": 4.4,
+        "resolveu_pct": 71,
+        "cv": 1.35
+      },
+      {
+        "tema": "Desbloqueio de cartão",
+        "volume_pct": 17,
+        "csat": 4,
+        "ces": 2.6,
+        "resolveu_pct": 89,
+        "cv": 0.7
+      },
+      {
+        "tema": "Pedido de aumento de limite",
+        "volume_pct": 14,
+        "csat": 3.6,
+        "ces": 3.5,
+        "resolveu_pct": 76,
+        "cv": 0.9
+      }
+    ],
+    "comentarios": [
+      "Paguei o valor que o app mostrou em destaque e vieram juros. Ninguém me avisou.",
+      "A atendente explicou o cálculo certinho, mas eu só queria entender por que o app não deixou isso claro.",
+      "Já é a terceira vez que ligo pela mesma cobrança e a resposta é sempre a mesma."
+    ],
+    "pista_monitoria": "Os atendentes explicam corretamente o cálculo dos encargos, mas em quase toda ligação o cliente diz que esperava outro valor a pagar."
+  },
+  "resposta": {
+    "causa": "Negativa de crédito",
+    "evidencia": "Nps",
+    "prioridade": "Melhorar a jornada de crédito"
+  },
+  "avaliacao": {
+    "causa": 4,
+    "evidencia": 3,
+    "priorizacao": 5,
+    "nota": 12,
+    "causa_provavel": "A forma como o app destaca o valor da fatura (pagamento mínimo/valor em destaque) não deixa claro que pagar esse valor gera juros, criando uma expectativa errada que o atendimento não consegue corrigir.",
+    "feedback": "Você acertou ao pensar na jornada do cliente, e isso é um bom ponto de partida. Porém, 'negativa de crédito' não aparece em nenhum dado do caso, então a causa não está sustentada. O problema está no tema de juros e encargos (24% do volume, CSAT 2,1, CES 5,8 e só 58% de resolução), e os comentários mostram que o cliente paga o valor destacado no app e é surpreendido por juros. Cite os números do caso e aponte um ponto concreto do processo ou sistema, como a comunicação do valor na fatura e no app, para priorizar por volume × dor.",
+    "dica_metodo": "Use a matriz volume × dor para cruzar volume, CSAT e CES por tema, e aplique os 5 Porquês para sair do sintoma (dúvida sobre juros) até a causa (comunicação do app)."
+  }
+}
